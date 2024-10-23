@@ -1,0 +1,41 @@
+# # Deployment of Weather App in Kubernetes
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: weather-app
+#   labels:
+#     app: weather-app
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: weather-app
+#   template:
+#     metadata:
+#       labels:
+#         app: weather-app
+#     spec:
+#       containers:
+#       - name: weather-app
+#         image: harsha8998/weather-app:v1
+#         ports:
+#         - containerPort: 8080
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weather-app
+  template:
+    metadata:
+      labels:
+        app: weather-app
+    spec:
+      containers:
+      - name: weather-app
+        image: harsha8998/weather-app:v1
+        ports:
+        - containerPort: 8080

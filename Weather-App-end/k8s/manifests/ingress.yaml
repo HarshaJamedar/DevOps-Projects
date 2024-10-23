@@ -1,0 +1,20 @@
+#Ingress for application
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: weather-app
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: weather-app.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: weather-app
+            port:
+              number: 80
